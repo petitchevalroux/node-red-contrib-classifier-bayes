@@ -29,7 +29,8 @@
   },
   "node-red": {
     "nodes": {
-      "bayes-training": "src/training.js"
+      "bayes-training": "src/training.js",
+      "bayes-classifier": "src/classifier.js"
     }
   }
 }
