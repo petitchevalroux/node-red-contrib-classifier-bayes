@@ -29,8 +29,8 @@ module.exports = function(RED) {
                 }
                 node.status({
                     fill: "green",
-                    shape: "dot",
-                    text: "training"
+                    shape: "ring",
+                    text: "received message for training"
                 });
                 classifierCollection.getClassifier(node.name)
                     .then(function(classifier) {
@@ -52,7 +52,7 @@ module.exports = function(RED) {
                             );
                         node.status({
                             fill: "green",
-                            shape: "ring",
+                            shape: "dot",
                             text: "trained"
                         });
                         return classifier;

@@ -24,6 +24,11 @@ module.exports = function(RED) {
         this.classifier = config.classifier;
         var node = this;
         this.on("input", function(msg) {
+            node.status({
+                fill: "green",
+                shape: "ring",
+                text: "received message to classify"
+            });
             try {
                 classifierCollection.getClassifier(node.classifier)
                     .then(function(classifier) {
@@ -35,6 +40,11 @@ module.exports = function(RED) {
                         node.send({
                             "payload": category,
                             "source": msg
+                        });
+                        node.status({
+                            fill: "green",
+                            shape: "dot",
+                            text: "message classified"
                         });
                         return category;
                     })
