@@ -2,6 +2,7 @@
 var classifierModule = require("classifier");
 var path = require("path");
 var classifierCollection = require(path.join(__dirname, "classifier-collection"));
+var nodeError = require(path.join(__dirname, "node-error"));
 
 module.exports = function(RED) {
     RED.nodes.registerType("bayes training node", function(config) {
@@ -58,31 +59,12 @@ module.exports = function(RED) {
                         return classifier;
                     })
                     .catch(function(err) {
-                        var info = JSON.stringify({
-                            "error": err.message,
-                            "msg": msg
-                        });
-                        var str = "error training " +
-                            info;
-                        node.status({
-                            fill: "red",
-                            shape: "dot",
-                            text: str
-                        });
-                        node.error(str);
+                        nodeError.log(node, msg, err,
+                            "error training");
                     });
             } catch (err) {
-                var info = JSON.stringify({
-                    "error": err.message,
-                    "msg": msg
-                });
-                var str = "error training " + info;
-                node.status({
-                    fill: "red",
-                    shape: "dot",
-                    text: str
-                });
-                node.error(str);
+                nodeError.log(node, msg, err,
+                    "error training");
             }
         });
     });
