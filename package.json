@@ -30,6 +30,7 @@
   "node-red": {
     "nodes": {
       "bayes-training": "src/training.js",
+      "bayes-evaluator": "src/evaluator.js",
       "bayes-classifier": "src/classifier.js"
     }
   }

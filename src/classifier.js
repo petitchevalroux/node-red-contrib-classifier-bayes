@@ -4,20 +4,7 @@ var classifierCollection = require(path.join(__dirname, "classifier-collection")
 var nodeUtils = require(path.join(__dirname, "node-utils"));
 
 module.exports = function(RED) {
-    // Callback route the visitor is returned from pocket website
-    RED.httpAdmin.get("/bayes/classifiers", function(req, res) {
-        classifierCollection.getClassifierKeys()
-            .then(function(keys) {
-                res.setHeader("Content-Type",
-                    "application/json");
-                res.send(JSON.stringify(keys));
-                return keys;
-            })
-            .catch(function(err) {
-                res.status(500)
-                    .send(err.message);
-            });
-    });
+    nodeUtils.setRoutes(RED);
     RED.nodes.registerType("bayes classifier node", function(config) {
         RED.nodes.createNode(this, config);
         this.name = config.name;

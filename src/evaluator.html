@@ -1,0 +1,63 @@
+<script type="text/javascript">
+    RED.nodes.registerType('bayes evaluator node',{
+        category: 'analysis-function',
+        color: '#f4f4f6',
+        defaults: {
+            "name": {"value":"","required":true},
+            "classifier":{"value":"","required":true}
+        },
+        icon: "arrow-in.png",
+        inputs: 1,
+        outputs: 0,
+        align: "right",
+        label: function() {
+            return this.name || "bayes evaluation node";
+        },
+        oneditprepare: function() {
+            var node = this;
+            $.getJSON("/bayes/classifiers", function(response){
+                if(Object.prototype.toString.call(response) === '[object Array]') {
+                    var $classifierSelect = $("#node-input-classifier");
+                    // Remove all option except default
+                    $classifierSelect.not(":first").remove();
+                    var currentClassifierFound = false;
+                    // Add all trained classifiers
+                    response.forEach(function(key){
+                        $classifierSelect.append($('<option>', {
+                            value: key,
+                            text: key
+                        }));
+                        if(node.classifier === key){
+                            currentClassifierFound = true;
+                        }
+                    });
+                    $classifierSelect.val(currentClassifierFound
+                        && typeof(node.classifier) !== "undefined" ?
+                        node.classifier : "");
+                }
+            });
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="bayes evaluator node">
+    <div class="form-row">
+        <label for="node-input-name">Name</label>
+        <input type="text" id="node-input-name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-classifier">Classifier</label>
+        <select id="node-input-classifier">
+            <option value="" selected>Select a trained classifier</option>
+        </select>
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="bayes evaluator node">
+    <p>Bayes node to evaluate a bayes classifier accurency</p>
+    <p><code>msg.payload</code> must contain an object with the following properties:</p>
+    <ul>
+        <li><code>content</code> a string with the input content</li>
+        <li><code>category</code> a string with the input category</li>
+    </ul>
+</script>
