@@ -1,7 +1,7 @@
 "use strict";
 var path = require("path");
 var classifierCollection = require(path.join(__dirname, "classifier-collection"));
-var nodeError = require(path.join(__dirname, "node-error"));
+var nodeUtils = require(path.join(__dirname, "node-utils"));
 
 module.exports = function(RED) {
     // Callback route the visitor is returned from pocket website
@@ -49,12 +49,12 @@ module.exports = function(RED) {
                         return category;
                     })
                     .catch(function(err) {
-                        nodeError.log(node, msg, err,
+                        nodeUtils.error(node, msg, err,
                             "error classify");
                     });
 
             } catch (err) {
-                nodeError.log(node, msg, err,
+                nodeUtils.error(node, msg, err,
                     "error classify");
             }
         });

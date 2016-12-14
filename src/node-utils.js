@@ -1,6 +1,6 @@
 "use strict";
 module.exports = {
-    log: function(node, msg, err, prefix) {
+    error: function(node, msg, err, prefix) {
         var info = JSON.stringify({
             "error": err.message,
             "msg": msg
