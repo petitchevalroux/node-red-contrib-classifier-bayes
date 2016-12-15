@@ -24,4 +24,9 @@
 
 <script type="text/x-red" data-help-name="bayes training node">
     <p>Bayes training node to train a bayes classifier</p>
+    <p><code>msg.payload</code> must contain an object with the following properties:</p>
+    <ul>
+        <li><code>content</code> a string with the input content</li>
+        <li><code>category</code> a string with the input category</li>
+    </ul>
 </script>
