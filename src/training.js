@@ -8,6 +8,7 @@ module.exports = function(RED) {
     RED.nodes.registerType("bayes training node", function(config) {
         RED.nodes.createNode(this, config);
         this.name = config.name;
+        this.thresholds = config.thresholds;
         var node = this;
         this.on("input", function(msg) {
             try {
@@ -36,11 +37,16 @@ module.exports = function(RED) {
                 classifierCollection.getClassifier(node.name)
                     .then(function(classifier) {
                         if (classifier === null) {
+                            var config = {};
+                            if (node.thresholds !== "") {
+                                config.thresholds =
+                                    JSON.parse(node.thresholds);
+                            }
                             return classifierCollection
                                 .addClassifier(
                                     node.name,
                                     new classifierModule
-                                    .Bayesian({})
+                                    .Bayesian(config)
                                 );
                         }
                         return classifier;

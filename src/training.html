@@ -3,7 +3,8 @@
         category: 'analysis-function',
         color: '#f4f4f6',
         defaults: {
-            "name": {"value":"",required:true}
+            "name": {"value":"",required:true},
+            "thresholds":{"value":""}
         },
         icon: "arrow-in.png",
         inputs: 1,
@@ -20,10 +21,22 @@
         <label for="node-input-name">Name</label>
         <input type="text" id="node-input-name">
     </div>
+    <div class="form-row">
+        <label for="node-input-name">Thresholds</label>
+        <input type="text" id="node-input-thresholds">
+    </div>
 </script>
 
 <script type="text/x-red" data-help-name="bayes training node">
     <p>Bayes training node to train a bayes classifier</p>
+    <p>
+        <code>Thresholds</code>: Specify the classification thresholds for each
+        category. To classify an item in a category with a threshold of
+        <code>x</code> the probably that item is in the category has to be more 
+        than <code>x</code> times the probability that it's in any other
+        category. Default value is <code>1</code>. A common threshold setting
+        for spam is: <code>{&quot;spam&quot;:3,&quot;ham&quot;:1}</code>
+    </p>
     <p><code>msg.payload</code> must contain an object with the following properties:</p>
     <ul>
         <li><code>content</code> a string with the input content</li>
