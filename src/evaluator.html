@@ -1,5 +1,5 @@
 <script type="text/javascript">
-    RED.nodes.registerType('bayes evaluator node',{
+    RED.nodes.registerType('bayes evaluator',{
         category: 'analysis-function',
         color: '#f4f4f6',
         defaults: {
@@ -11,7 +11,7 @@
         outputs: 0,
         align: "right",
         label: function() {
-            return this.name || "bayes evaluation node";
+            return this.name || "bayes evaluator node";
         },
         oneditprepare: function() {
             var node = this;
@@ -40,7 +40,7 @@
     });
 </script>
 
-<script type="text/x-red" data-template-name="bayes evaluator node">
+<script type="text/x-red" data-template-name="bayes evaluator">
     <div class="form-row">
         <label for="node-input-name">Name</label>
         <input type="text" id="node-input-name">
@@ -53,7 +53,7 @@
     </div>
 </script>
 
-<script type="text/x-red" data-help-name="bayes evaluator node">
+<script type="text/x-red" data-help-name="bayes evaluator">
     <p>Bayes node to evaluate a bayes classifier accurency</p>
     <p><code>msg.payload</code> must contain an object with the following properties:</p>
     <ul>

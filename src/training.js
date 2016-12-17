@@ -5,7 +5,7 @@ var classifierCollection = require(path.join(__dirname, "classifier-collection")
 var nodeUtils = require(path.join(__dirname, "node-utils"));
 
 module.exports = function(RED) {
-    RED.nodes.registerType("bayes training node", function(config) {
+    RED.nodes.registerType("bayes training", function(config) {
         RED.nodes.createNode(this, config);
         this.name = config.name;
         this.thresholds = config.thresholds;

@@ -1,5 +1,5 @@
 <script type="text/javascript">
-    RED.nodes.registerType('bayes classifier node',{
+    RED.nodes.registerType('bayes classifier',{
         category: 'analysis-function',
         color: '#f4f4f6',
         defaults: {
@@ -11,7 +11,7 @@
         outputs: 1,
         align: "left",
         label: function() {
-            return this.name || "bayes classifier node";
+            return this.name || "bayes classifier";
         },
         oneditprepare: function() {
             var node = this;
@@ -40,7 +40,7 @@
     });
 </script>
 
-<script type="text/x-red" data-template-name="bayes classifier node">
+<script type="text/x-red" data-template-name="bayes classifier">
     <div class="form-row">
         <label for="node-input-name">Name</label>
         <input type="text" id="node-input-name">
@@ -53,7 +53,7 @@
     </div>
 </script>
 
-<script type="text/x-red" data-help-name="bayes classifier node">
+<script type="text/x-red" data-help-name="bayes classifier">
     <p>Bayes classifer node to train a bayes classifier</p>
     <p>Input: <code>msg.payload</code> contains the string to classify</p>
     <p>Output: <code>msg.payload</code> contains category resulting from selected classifier. Additionnaly, msg.source contains the input message.</p>

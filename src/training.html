@@ -1,5 +1,5 @@
 <script type="text/javascript">
-    RED.nodes.registerType('bayes training node',{
+    RED.nodes.registerType('bayes training',{
         category: 'analysis-function',
         color: '#f4f4f6',
         defaults: {
@@ -16,7 +16,7 @@
     });
 </script>
 
-<script type="text/x-red" data-template-name="bayes training node">
+<script type="text/x-red" data-template-name="bayes training">
     <div class="form-row">
         <label for="node-input-name">Name</label>
         <input type="text" id="node-input-name">
@@ -27,7 +27,7 @@
     </div>
 </script>
 
-<script type="text/x-red" data-help-name="bayes training node">
+<script type="text/x-red" data-help-name="bayes training">
     <p>Bayes training node to train a bayes classifier</p>
     <p>
         <code>Thresholds</code>: Specify the classification thresholds for each

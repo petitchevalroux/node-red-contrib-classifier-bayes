@@ -5,7 +5,7 @@ var nodeUtils = require(path.join(__dirname, "node-utils"));
 
 module.exports = function(RED) {
     nodeUtils.setRoutes(RED);
-    RED.nodes.registerType("bayes classifier node", function(config) {
+    RED.nodes.registerType("bayes classifier", function(config) {
         RED.nodes.createNode(this, config);
         this.name = config.name;
         this.classifier = config.classifier;
