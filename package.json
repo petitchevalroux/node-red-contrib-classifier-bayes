@@ -27,6 +27,7 @@
     "bluebird": "^3.4.6",
     "classifier": "^0.1.0"
   },
+  "keywords": [ "node-red" ],
   "node-red": {
     "nodes": {
       "bayes-training": "src/training.js",
